@@ -1,8 +1,10 @@
 import unittest
 
+import pytest
 import flask_unittest
 from flask import Flask
 from tests.app_factory import build_app
+from re import search
 
 
 class _TestBase(flask_unittest.AppTestCase):
@@ -42,6 +44,12 @@ class TestSetup(_TestBase):
                              'Test did not pass the Hello World 200 status code test.')
             self.assertEqual(b'Hello World!', hello_response.data,
                              'Test did not pass the Hello World body content test.')
+
+    def test_main(self, app: Flask):
+        with app.test_client() as client:
+            main_response = client.get('/')
+            self.assertEqual(200, main_response.status_code, 'Main path did not pass the 200 status code')
+            self.assertTrue(search('Welcome to website simulator', main_response.data.decode('UTF-8')) is not None)
 
 
 if __name__ == '__main__':
