@@ -71,6 +71,27 @@ class TestSetup(_TestBase):
             static_file_response = client.get('/css/style.css')
             self.assertEqual(200, static_file_response.status_code, '/css/style.css was not found')
 
+    def test_sleep(self, app: Flask):
+        with app.test_client() as client:
+            sleep_response = client.get('/sleep')
+            self.assertEqual(200, sleep_response.status_code, '/sleep was not found')
+            response_text = sleep_response.data.decode('UTF-8')
+            self.assertTrue(search('Simulating website with %100 delay of 0.0 seconds', response_text) is not None)
+            self.assertTrue(search('SUCCESSFUL', response_text) is not None)
+            sleep_response = client.get('/sleep/1')
+            self.assertEqual(200, sleep_response.status_code, '/sleep/1 was not found')
+            response_text = sleep_response.data.decode('UTF-8')
+            self.assertTrue(search('Simulating website with %100 delay of 1.0 seconds', response_text) is not None)
+            self.assertTrue(search('SUCCESSFUL', response_text) is not None)
+            sleep_response = client.get('/sleep/1/0')
+            self.assertEqual(200, sleep_response.status_code, '/sleep/0/0 was not found')
+            response_text = sleep_response.data.decode('UTF-8')
+            self.assertTrue(search('SKIPPED', response_text) is not None)
+            sleep_response = client.get('/sleep/1/500')
+            self.assertEqual(400, sleep_response.status_code, '/sleep/0/500 was not found')
+            response_text = sleep_response.data.decode('UTF-8')
+            self.assertTrue(search('SUCCESSFUL', response_text) is not None)
+
 
 if __name__ == '__main__':
     unittest.main()
