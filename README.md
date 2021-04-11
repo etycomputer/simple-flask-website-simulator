@@ -40,6 +40,8 @@ To install the necessary packages:
 pip install -r requirements.txt
 ```
 
+---
+
 ##Requirements
 
 This project utilizes the following requirements:
@@ -48,3 +50,4 @@ This project utilizes the following requirements:
 1. Flask v1.1.2
 1. pytest v6.2.3
 1. flask-unittest v0.1.1
+1. gunicorn v20.1.0
