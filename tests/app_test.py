@@ -51,6 +51,26 @@ class TestSetup(_TestBase):
             self.assertEqual(200, main_response.status_code, 'Main path did not pass the 200 status code')
             self.assertTrue(search('Welcome to website simulator', main_response.data.decode('UTF-8')) is not None)
 
+    def test_static_icon_file_exists(self, app: Flask):
+        with app.test_client() as client:
+            static_file_response = client.get('/icon/favicon.ico')
+            self.assertEqual(200, static_file_response.status_code, '/icon/favicon.ico was not found')
+            static_file_response = client.get('/icon/favicon-16x16.png')
+            self.assertEqual(200, static_file_response.status_code, 'favicon-16x16.png was not found')
+            static_file_response = client.get('/icon/favicon-32x32.png')
+            self.assertEqual(200, static_file_response.status_code, 'favicon-32x32.png was not found')
+            static_file_response = client.get('/icon/apple-touch-icon.png')
+            self.assertEqual(200, static_file_response.status_code, 'apple-touch-icon.png was not found')
+            static_file_response = client.get('/icon/android-chrome-192x192.png')
+            self.assertEqual(200, static_file_response.status_code, 'android-chrome-192x192.png was not found')
+            static_file_response = client.get('/icon/android-chrome-512x512.png')
+            self.assertEqual(200, static_file_response.status_code, 'android-chrome-512x512.png was not found')
+
+    def test_static_css_file_exists(self, app: Flask):
+        with app.test_client() as client:
+            static_file_response = client.get('/css/style.css')
+            self.assertEqual(200, static_file_response.status_code, '/css/style.css was not found')
+
 
 if __name__ == '__main__':
     unittest.main()
