@@ -21,11 +21,16 @@
     <ul>
       <li><a href="/">/</a></li>
       <li><a href="/hello">/Hello</a></li>
+      <li><a href="/sleep">/sleep</a></li>
+      <li><a href="/sleep/5">/sleep/{duration:int}</a></li>
+      <li><a href="/sleep/5/50">/sleep/{duration:int}/{probability:int}</a></li>
     </ul>
   </nav>
 
   <article>
-    <h1>{{ message }}</h1>
+    <h1>{{message}}</h1>
+    <p>Status code <b>{{status_code}}</b></p>
+    <p><b>{{action_message}}</b></p>
   </article>
 </section>
 

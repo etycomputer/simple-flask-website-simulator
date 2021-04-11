@@ -18,6 +18,6 @@ def create_app():
 
     @app.route('/')
     def home():
-        return render_template('base_layout.html', message="Hello World!")
+        return render_template('base_layout.html', message="Hello World!", status_code=200, action_message='')
 
     return app
