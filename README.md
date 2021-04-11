@@ -47,3 +47,4 @@ This project utilizes the following requirements:
 1. Python v3.8.1
 1. Flask v1.1.2
 1. pytest v6.2.3
+1. flask-unittest v0.1.1
