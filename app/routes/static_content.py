@@ -43,6 +43,5 @@ def android_chrome_512_png():
 
 @bp.route('/css/style.css')
 def style_css():
-    print(os.path.join(bp.root_path, '..', 'static'))
     return send_from_directory(os.path.join(bp.root_path, '..', 'static'),
                                'style.css', mimetype='text/css')
