@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from app.routes import bp as static_content_bp
 
 
 def create_app():
@@ -8,6 +9,8 @@ def create_app():
         template_folder='templates',
         instance_relative_config=True
     )
+    app.debug = True
+    app.register_blueprint(static_content_bp, url_prefix='/')
 
     @app.route('/hello', methods=['GET'])
     def hello():
