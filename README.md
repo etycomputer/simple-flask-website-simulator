@@ -1,8 +1,12 @@
+![GitHub](https://img.shields.io/github/license/etycomputer/simple-flask-website-simulator)
+
 # simple-flask-website-simulator
 
 ## Introduction
 
-This is a simple Flask application for simulation website delays.
+This is a simple Flask application for simulating website delays.
+This simulator is intended to be targeted by the website-metrics-producer 
+to collect HTTP response duration, response code and page content parsing.
 
 ---
 
@@ -10,7 +14,8 @@ This is a simple Flask application for simulation website delays.
 
 ### First Steps
 
-You can begin by either downloading a zip file of the project through github, or using a git command to clone the project by:
+You can begin by either downloading a zip file of the project through github, 
+or using a git command to clone the project by:
 
 ```bash
 git clone https://github.com/etycomputer/simple-flask-website-simulator.git
@@ -18,7 +23,8 @@ git clone https://github.com/etycomputer/simple-flask-website-simulator.git
 
 ### Virtual Environment Setup
 
-Create a [Python 3.8.1](https://www.python.org/downloads/release/python-381/) based virtual environment (venv) for this project directory.
+Create a [Python 3.8.1](https://www.python.org/downloads/release/python-381/) based 
+virtual environment (venv) for this project directory.
 ```bash
 virtualenv venv -p python3.8.1
 ```
